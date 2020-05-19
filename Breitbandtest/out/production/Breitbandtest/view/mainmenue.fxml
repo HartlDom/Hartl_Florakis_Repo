@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainMenueController">
+   <children>
+      <Label layoutX="142.0" layoutY="48.0" text="Bandbreiten Tester 2000">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Button layoutX="251.0" layoutY="146.0" mnemonicParsing="false" onAction="#doTest" text="Testung starten" />
+      <Button layoutX="252.0" layoutY="200.0" mnemonicParsing="false" onAction="#showResults" text="Alle Ergebnisse" />
+   </children>
+</AnchorPane>
