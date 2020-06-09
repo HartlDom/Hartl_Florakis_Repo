@@ -42,6 +42,9 @@ public class NetworkMeasurement {
 
     @Override
     public String toString() {
-        return "Test vom 25.2.2020";
+        return "NetworkMeasurement{" +
+                "measurementID=" + measurementID +
+                ", clients=" + clients +
+                '}';
     }
 }
