@@ -1,0 +1,4 @@
+Database URL: jdbc:mysql://localhost:3306/ndb?serverTimezone=UTC
+Used DB schema: ndb
+user: root
+password: cisco123!

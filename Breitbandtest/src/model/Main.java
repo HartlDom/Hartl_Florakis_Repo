@@ -9,11 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Quellklassen.NetworkTest;
+import model.Quellklassen.NetworkMeasurement;
+
 import java.util.ArrayList;
 
 public class Main extends Application {
     Stage primaryStage = null;
-    private ArrayList<Test> allTests;
+    DatabaseCommunication dc = new DatabaseCommunication();
+    private ArrayList<NetworkMeasurement> allNetworkMeasurements;
 
 
     @Override
@@ -30,6 +34,12 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
+    }
+
+    @Override
+    public void init() throws Exception {
+        dc.setDefaultSchema();
+        allNetworkMeasurements = dc.getAllMeasurements();
     }
 
     public void createTest() throws Exception {
@@ -58,7 +68,7 @@ public class Main extends Application {
 
     }
 
-    public void showDetails(ArrayList<Measurement> t) throws Exception{
+    public void showDetails(ArrayList<NetworkTest> t) throws Exception{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/measurement.fxml"));
         Parent root = loader.load();
@@ -79,24 +89,9 @@ public class Main extends Application {
         }
     }
 
-    @Override
-    public void init() throws Exception {
-        allTests = new ArrayList<Test>();
-        Test t = new Test();
 
-        //TODO hier wird von der Datenbank eingelesen, diese Eingaben per Hand dienen zum Veranschaulichung
-        t.addMeasurementToTest(new Measurement(40, "08:30"));
-        t.addMeasurementToTest(new Measurement(35, "09:00"));
-        t.addMeasurementToTest(new Measurement(30, "09:30"));
-        t.addMeasurementToTest(new Measurement(25, "10:00"));
-        t.addMeasurementToTest(new Measurement(20, "10:30"));
-        allTests.add(t);
-
-
-    }
-
-    public ArrayList<Test> getAllTests() {
-        return allTests;
+    public ArrayList<NetworkMeasurement> getAllNetworkMeasurements() {
+        return allNetworkMeasurements;
     }
 
     public static void main(String[] args) {

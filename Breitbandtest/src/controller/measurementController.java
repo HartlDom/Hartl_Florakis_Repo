@@ -8,13 +8,13 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import model.Main;
-import model.Measurement;
+import model.Quellklassen.NetworkTest;
 
 import java.util.ArrayList;
 
 public class measurementController {
 
-    ArrayList<Measurement> t;
+    ArrayList<NetworkTest> t;
     private Main model;
     @FXML
     private Label headline;
@@ -33,7 +33,7 @@ public class measurementController {
 
     }
 
-    public void setList(ArrayList<Measurement> t) {
+    public void setList(ArrayList<NetworkTest> t) {
         this.t = t;
 
         showonChart();
@@ -43,7 +43,7 @@ public class measurementController {
         XYChart.Series series = new XYChart.Series();
         System.out.println("Size: " +t.size());
         for (int i = 0; i < t.size(); i++) {
-            series.getData().add(new XYChart.Data(t.get(i).getTimestamp(), t.get(i).getSpeed()));
+            series.getData().add(new XYChart.Data(t.get(i).getTimestamp(), t.get(i).getNetworkSpeed()));
         }
 
         lineChart.getData().add(series);

@@ -8,14 +8,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import model.Main;
-import model.Test;
+import model.ReadProperties;
+import model.Quellklassen.NetworkMeasurement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class showAllResultsController {
     private Main model;
     private ObservableList list;
-    private ArrayList<Test> temp;
+    private ArrayList<NetworkMeasurement> temp;
     private int selected;
 
     @FXML
@@ -28,9 +32,10 @@ public class showAllResultsController {
 
 
     public void printToListView() {
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        list = FXCollections.observableArrayList(model.getAllTests());
-        listView.setItems(list);
+
+            listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+            list = FXCollections.observableArrayList(model.getAllNetworkMeasurements());
+            listView.setItems(list);
 
     }
 
@@ -40,10 +45,10 @@ public class showAllResultsController {
         try {
             selected = listView.getSelectionModel().getSelectedIndex();
 
-            Test t = (Test) list.get(selected);
+            NetworkMeasurement t = (NetworkMeasurement) list.get(selected);
 
 
-            model.showDetails(t.getMeasurements());
+            model.showDetails(t.getTests());
         } catch (Exception e) {
             e.printStackTrace();
         }
