@@ -55,6 +55,8 @@ public class measurementController {
         pc1.setText(networkMeasurement.getClients().toString().split(";")[0]);
         pc2.setText(networkMeasurement.getClients().toString().split(";")[1]);
 
+        headline.setText("Messung vom "+networkMeasurement.getDate());
+
         showonChart();
     }
 

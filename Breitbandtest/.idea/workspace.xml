@@ -5,11 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Breitbandtest/view/measurement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Breitbandtest/view/measurement.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/measurementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/measurementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/newTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/newTestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/showAllResultsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/showAllResultsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/DatabaseCommunication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DatabaseCommunication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Quellklassen/Clients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Quellklassen/Clients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Quellklassen/NetworkMeasurement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Quellklassen/NetworkMeasurement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ReadProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ReadProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/properties.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/properties.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/measurement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/measurement.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,9 +58,6 @@
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="JavaFxApplication" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -106,6 +103,7 @@
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -210,6 +208,7 @@
       <workItem from="1591726868870" duration="995000" />
       <workItem from="1592822385012" duration="2945000" />
       <workItem from="1592902873163" duration="192000" />
+      <workItem from="1592903696270" duration="2610000" />
     </task>
     <task id="LOCAL-00001" summary="v2.1 - Von DB laden">
       <created>1591715760695</created>
@@ -218,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591715760695</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v2.1 - Von DB laden">
+      <created>1592903715440</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592903715440</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,21 +249,29 @@
     <option name="LAST_COMMIT_MESSAGE" value="v2.1 - Von DB laden" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="914" height="178" key="GridCell.Tab.0.bottom" timestamp="1592903065153">
+    <state x="496" y="87" key="CommitChangelistDialog2" timestamp="1592903713330">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="178" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592903065153" />
-    <state width="914" height="178" key="GridCell.Tab.0.center" timestamp="1592903065153">
+    <state x="496" y="87" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592903713330" />
+    <state width="1319" height="300" key="GridCell.Tab.0.bottom" timestamp="1592905887398">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="178" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592903065153" />
-    <state width="914" height="178" key="GridCell.Tab.0.left" timestamp="1592903065153">
+    <state width="1319" height="300" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592905887398" />
+    <state width="1319" height="300" key="GridCell.Tab.0.center" timestamp="1592905887398">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="178" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592903065153" />
-    <state width="914" height="178" key="GridCell.Tab.0.right" timestamp="1592903065153">
+    <state width="1319" height="300" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592905887398" />
+    <state width="1319" height="300" key="GridCell.Tab.0.left" timestamp="1592905887398">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="178" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592903065153" />
+    <state width="1319" height="300" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592905887398" />
+    <state width="1319" height="300" key="GridCell.Tab.0.right" timestamp="1592905887398">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1319" height="300" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592905887398" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1592903717416">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592903717416" />
   </component>
 </project>

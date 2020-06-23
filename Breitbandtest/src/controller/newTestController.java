@@ -1,10 +1,15 @@
 package controller;
 
+import com.sun.deploy.util.SystemUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import model.DatabaseCommunication;
 import model.Main;
+import model.ReadProperties;
+import org.w3c.dom.ls.LSOutput;
+import sun.plugin2.util.SystemUtil;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -32,15 +37,28 @@ public class newTestController {
     @FXML
     void doTest(ActionEvent event) {
         try{
-            String command = "dir";
-            String input;
-            Process p = Runtime.getRuntime().exec(command);
-            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            while ((input = br.readLine()) != null) {
-                //TODO Testen was hier heirrein kommt
+            String os = System.getProperties().getProperty("os.name");
+
+            if (!os.contains("Windows")) {
+                ReadProperties rp = new ReadProperties();
+
+                String cmd = rp.readCommand();
+
+                Process proc = Runtime.getRuntime().exec(cmd);
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+
+                String line = "";
+                while ((line = reader.readLine())!= null) {
+                    System.out.println(line);
+                }
+
+                proc.waitFor();
             }
-            p.waitFor();
-            p.destroy();
+
+            else {
+                System.out.println("Du musst auf Linux sein");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

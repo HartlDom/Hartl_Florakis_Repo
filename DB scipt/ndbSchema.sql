@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `ndb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `ndb`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ndb
@@ -32,16 +34,6 @@ CREATE TABLE `clients` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clients`
---
-
-LOCK TABLES `clients` WRITE;
-/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,'192.168.17.2','192.168.17.3');
-/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `networkmeasurements`
 --
 
@@ -50,27 +42,16 @@ DROP TABLE IF EXISTS `networkmeasurements`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `networkmeasurements` (
   `measurementID` int NOT NULL,
-  `timestamp` datetime NOT NULL,
+  `timestamp` date NOT NULL,
   `clients` int NOT NULL,
-  `tests` int DEFAULT NULL,
+  `test` int NOT NULL,
   PRIMARY KEY (`measurementID`),
   UNIQUE KEY `testID_UNIQUE` (`measurementID`),
   KEY `clientsID_idx` (`clients`),
-  KEY `tests_idx` (`tests`),
-  CONSTRAINT `clientsID` FOREIGN KEY (`clients`) REFERENCES `clients` (`clientsID`),
-  CONSTRAINT `tests` FOREIGN KEY (`tests`) REFERENCES `networktest` (`testID`)
+  KEY `testID_idx` (`test`),
+  CONSTRAINT `clientsID` FOREIGN KEY (`clients`) REFERENCES `clients` (`clientsID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='In dieser Tabelle werden Messungen gespeichert, Messungen beinhalten Tests.';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `networkmeasurements`
---
-
-LOCK TABLES `networkmeasurements` WRITE;
-/*!40000 ALTER TABLE `networkmeasurements` DISABLE KEYS */;
-INSERT INTO `networkmeasurements` VALUES (1,'2020-06-09 16:26:52',1,1);
-/*!40000 ALTER TABLE `networkmeasurements` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `networktest`
@@ -85,20 +66,15 @@ CREATE TABLE `networktest` (
   `transferedVolume` float NOT NULL,
   `bandwith` float NOT NULL,
   `timestamp` varchar(45) NOT NULL,
+  `measurementID` int NOT NULL,
   PRIMARY KEY (`testID`),
-  UNIQUE KEY `measurmentID_UNIQUE` (`testID`)
+  UNIQUE KEY `measurmentID_UNIQUE` (`testID`),
+  KEY `measurementID_idx` (`measurementID`),
+  KEY `measure_idx` (`measurementID`),
+  KEY `measurement_idx` (`measurementID`),
+  CONSTRAINT `measurement` FOREIGN KEY (`measurementID`) REFERENCES `networkmeasurements` (`measurementID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Diese Tabelle speichert die aktuelle Testung des Netzwerkes.';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `networktest`
---
-
-LOCK TABLES `networktest` WRITE;
-/*!40000 ALTER TABLE `networktest` DISABLE KEYS */;
-INSERT INTO `networktest` VALUES (1,25,50,25,'13:13');
-/*!40000 ALTER TABLE `networktest` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -109,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-09 16:31:48
+-- Dump completed on 2020-06-23 11:57:50

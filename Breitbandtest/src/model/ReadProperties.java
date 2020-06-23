@@ -73,4 +73,24 @@ public class ReadProperties {
         return null;
     }
 
+    public String readCommand() {
+        try(BufferedReader br = new BufferedReader(new FileReader(new File("./src/properties.txt")))) {
+            String cmd = "";
+
+            br.readLine();
+            br.readLine();
+            br.readLine();
+            br.readLine();
+
+            cmd= br.readLine().split(": ")[1];
+            return  cmd;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

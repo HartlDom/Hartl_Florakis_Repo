@@ -39,7 +39,6 @@ public class DatabaseCommunication {
         return null;
     }
 
-
     public ArrayList<NetworkMeasurement> getAllMeasurements() {
 
         try(Connection con = DriverManager.getConnection(rp.readURL(), rp.readUser(), rp.readPwd())) {
