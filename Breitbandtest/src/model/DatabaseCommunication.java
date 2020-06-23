@@ -23,6 +23,22 @@ public class DatabaseCommunication {
         }
     }
 
+    public Date getDateofMeasurment(int measurementID) {
+        try(Connection con = DriverManager.getConnection(rp.readURL(), rp.readUser(), rp.readPwd())) {
+            PreparedStatement prep = con.prepareStatement("Select timestamp from networkmeasurement where measurementID = ?");
+            prep.setInt(1, measurementID);
+            ResultSet rs = prep.executeQuery();
+
+            rs.first();
+            Date date = rs.getDate(2);
+            return date;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public ArrayList<NetworkMeasurement> getAllMeasurements() {
 
@@ -33,13 +49,11 @@ public class DatabaseCommunication {
             ResultSet measurements = prep.executeQuery();
             while (measurements.next()) {
                    ArrayList<NetworkTest> testFromThis = new ArrayList<NetworkTest>();
-                   ArrayList<Clients> clientsFromThis = new ArrayList<Clients>();
                    int clientID = measurements.getInt(3);
-                   int testID = measurements.getInt(4);
 
 
-                   prep = con.prepareStatement("Select * from networktest where testID = ?",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-                   prep.setInt(1, testID);
+                   prep = con.prepareStatement("Select * from networktest where measurementID = ?",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                   prep.setInt(1, measurements.getInt(1));
 
                    ResultSet tests = prep.executeQuery();
 
@@ -53,10 +67,10 @@ public class DatabaseCommunication {
 
 
                    clients.first();
-                       Clients clients1 = new Clients(clients.getString(2), clients.getString(3));
+                   Clients clients1 = new Clients(clients.getString(2), clients.getString(3));
 
 
-                   allMeasurements.add(new NetworkMeasurement(measurements.getInt(1), clients1, testFromThis));
+                   allMeasurements.add(new NetworkMeasurement(measurements.getInt(1), measurements.getDate(2), clients1, testFromThis));
 
             }
 

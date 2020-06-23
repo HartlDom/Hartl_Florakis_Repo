@@ -68,14 +68,14 @@ public class Main extends Application {
 
     }
 
-    public void showDetails(ArrayList<NetworkTest> t) throws Exception{
+    public void showDetails(NetworkMeasurement networkMeasurement) throws Exception{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/measurement.fxml"));
         Parent root = loader.load();
         measurementController measurement = loader.getController();
 
         measurement.setModel(this);
-        measurement.setList(t);
+        measurement.setList(networkMeasurement);
         primaryStage.setTitle("Test");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

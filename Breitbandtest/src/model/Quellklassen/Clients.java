@@ -30,9 +30,6 @@ public class Clients {
 
     @Override
     public String toString() {
-        return "Clients{" +
-                "ip1='" + ip1 + '\'' +
-                ", ip2='" + ip2 + '\'' +
-                '}';
+        return ip1 + ";" + ip2;
     }
 }

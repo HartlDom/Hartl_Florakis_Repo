@@ -8,12 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import model.Main;
-import model.ReadProperties;
 import model.Quellklassen.NetworkMeasurement;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class showAllResultsController {
@@ -48,7 +44,7 @@ public class showAllResultsController {
             NetworkMeasurement t = (NetworkMeasurement) list.get(selected);
 
 
-            model.showDetails(t.getTests());
+            model.showDetails(t);
         } catch (Exception e) {
             e.printStackTrace();
         }

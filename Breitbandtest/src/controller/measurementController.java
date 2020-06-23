@@ -7,14 +7,18 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import model.DatabaseCommunication;
 import model.Main;
+import model.Quellklassen.NetworkMeasurement;
 import model.Quellklassen.NetworkTest;
+import sun.nio.ch.Net;
 
 import java.util.ArrayList;
 
 public class measurementController {
 
-    ArrayList<NetworkTest> t;
+    NetworkMeasurement networkMeasurement;
+    ArrayList<NetworkTest> tests;
     private Main model;
     @FXML
     private Label headline;
@@ -29,21 +33,36 @@ public class measurementController {
     private NumberAxis y;
 
     @FXML
-    void goback(ActionEvent event) {
+    private Label pc1;
 
+    @FXML
+    private Label pc2;
+
+    @FXML
+    void goback(ActionEvent event) {
+        try {
+            model.showResults();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setList(ArrayList<NetworkTest> t) {
-        this.t = t;
+    public void setList(NetworkMeasurement networkMeasurement) {
+        this.networkMeasurement = networkMeasurement;
+        tests = networkMeasurement.getTests();
+        DatabaseCommunication dc = new DatabaseCommunication();
+
+        pc1.setText(networkMeasurement.getClients().toString().split(";")[0]);
+        pc2.setText(networkMeasurement.getClients().toString().split(";")[1]);
 
         showonChart();
     }
 
     private void showonChart() {
         XYChart.Series series = new XYChart.Series();
-        System.out.println("Size: " +t.size());
-        for (int i = 0; i < t.size(); i++) {
-            series.getData().add(new XYChart.Data(t.get(i).getTimestamp(), t.get(i).getNetworkSpeed()));
+        System.out.println("Size: " +tests.size());
+        for (int i = 0; i < tests.size(); i++) {
+            series.getData().add(new XYChart.Data(tests.get(i).getTimestamp(), tests.get(i).getNetworkSpeed()));
         }
 
         lineChart.getData().add(series);
