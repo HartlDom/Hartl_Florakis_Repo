@@ -1,15 +1,11 @@
 package controller;
 
-import com.sun.deploy.util.SystemUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import model.DatabaseCommunication;
 import model.Main;
 import model.ReadProperties;
-import org.w3c.dom.ls.LSOutput;
-import sun.plugin2.util.SystemUtil;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
